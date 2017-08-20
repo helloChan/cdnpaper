@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.cdnpaper.dao.PersonDao">
+	<insert id="insert">
+		insert into test_person(name, age) values (#{name}, #{age})
+	</insert>
+	
+	<delete id="delete">
+		delete from test_person where id=#{id}
+	</delete>
+	
+	<update id="update">
+		update test_person set name=#{name}, age=#{age} where id=#{id}
+	</update>
+	
+	<select id="select" resultType="person">
+		select * from test_person
+	</select>
+	
+</mapper>
