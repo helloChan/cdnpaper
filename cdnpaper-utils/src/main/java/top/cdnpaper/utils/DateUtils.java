@@ -9,6 +9,8 @@ import org.joda.time.Days;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import static top.cdnpaper.utils.Constants.*;
+
 /**
 * @author JiangSiying E-mail:1036539739@qq.com
 * @version 创建时间：2017年8月21日 下午6:13:48
@@ -24,32 +26,32 @@ public class DateUtils {
 	/**
 	 * 当前时间的字符串格式{@link Constants#YYYYMMDD}
 	 */
-	public static final String NOW_YYYYMMDD = defaultDate2String(NOW, Constants.YYYYMMDD);
+	public static final String NOW_YYYYMMDD = defaultDate2String(NOW, YYYYMMDD);
 	
 	/**
 	 * 当前时间的字符串格式{@link Constants#YYYY_MM_DD}
 	 */
-	public static final String NOW_YYYY_MM_DD = defaultDate2String(NOW, Constants.YYYY_MM_DD);
+	public static final String NOW_YYYY_MM_DD = defaultDate2String(NOW, YYYY_MM_DD);
 	
 	/**
 	 * 当前时间的字符串格式{@link Constants#YYYYMMDD_CHINESE}
 	 */
-	public static final String NOW_YYYYMMDD_CHINESE = defaultDate2String(NOW, Constants.YYYYMMDD_CHINESE);
+	public static final String NOW_YYYYMMDD_CHINESE = defaultDate2String(NOW, YYYYMMDD_CHINESE);
 	
 	/**
 	 * 当前时间的字符串格式{@link Constants#YYYY_MM_DD_HHSSMM_24}
 	 */
-	public static final String NOW_YYYY_MM_DD_HHSSMM_24 = defaultDate2String(NOW, Constants.YYYY_MM_DD_HHSSMM_24);
+	public static final String NOW_YYYY_MM_DD_HHSSMM_24 = defaultDate2String(NOW, YYYY_MM_DD_HHSSMM_24);
 
 	/**
 	 * 当前时间的字符串格式{@link Constants#YYYY_MM_DD_HHSSMM_12_ENGLISH}
 	 */
-	public static final String NOW_YYYY_MM_DD_HHSSMM_12_ENGLISH = date2String(NOW, Constants.YYYY_MM_DD_HHSSMM_12_ENGLISH, Locale.ENGLISH);
+	public static final String NOW_YYYY_MM_DD_HHSSMM_12_ENGLISH = date2String(NOW, YYYY_MM_DD_HHSSMM_12_ENGLISH, Locale.ENGLISH);
 
 	/**
 	 * 当前时间的字符串格式{@link Constants#YYYY_MM_DD_HHSSMM_12_CHINESE}
 	 */
-	public static final String NOW_YYYY_MM_DD_HHSSMM_12_CHINESE = date2String(NOW, Constants.YYYY_MM_DD_HHSSMM_12_CHINESE, Locale.CHINESE);
+	public static final String NOW_YYYY_MM_DD_HHSSMM_12_CHINESE = date2String(NOW, YYYY_MM_DD_HHSSMM_12_CHINESE, Locale.CHINESE);
 	
 	/**
 	 * 系统毫秒级的当前时间
@@ -75,7 +77,7 @@ public class DateUtils {
 	 */
 	public static String date2String(Date date, String pattern, Locale locale){
 		return new DateTime(date).toString(
-				StringUtils.isNotBlank(pattern)?pattern:Constants.YYYY_MM_DD, 
+				StringUtils.isNotBlank(pattern)?pattern:YYYY_MM_DD, 
 				locale==null?Locale.CHINESE:locale);
 	}
 	
@@ -90,7 +92,7 @@ public class DateUtils {
 		if(StringUtils.isNotBlank(date)){
 			return DateTime.parse(date, 
 					DateTimeFormat.forPattern(
-							StringUtils.isNotBlank(pattern)?pattern:Constants.YYYY_MM_DD))
+							StringUtils.isNotBlank(pattern)?pattern:YYYY_MM_DD))
 					.toDate();
 		}else{
 			throw new CustomException(new NullPointerException());
@@ -148,7 +150,7 @@ public class DateUtils {
 	public static int daysBetween(String start, String end, String pattern) throws CustomException{
 		if(StringUtils.isNotBlank(start) && StringUtils.isNotBlank(end)){
 			DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(
-					StringUtils.isNotBlank(pattern)?pattern:Constants.YYYY_MM_DD);
+					StringUtils.isNotBlank(pattern)?pattern:YYYY_MM_DD);
 			DateTime dateTimeStart = DateTime.parse(start, dateTimeFormatter);
 			DateTime dateTimeEnd = DateTime.parse(end, dateTimeFormatter);
 			return Days.daysBetween(dateTimeStart, dateTimeEnd).getDays();

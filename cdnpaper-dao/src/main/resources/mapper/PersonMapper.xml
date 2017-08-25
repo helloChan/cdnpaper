@@ -17,6 +17,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="select" resultType="person">
 		select * from test_person
+		<where>
+			<if test="var.name!=null and var.name!=''">
+				name like concat('%', #{var.name}, '%')
+			</if>
+			<if test="var.age>0">
+				and age=#{var.age}
+			</if>
+		</where>
+		<if test="order!=null">
+			<foreach collection="order" index="key" item="value" open="order by" separator=",">
+				`${key}` ${value}
+			</foreach>
+		</if>
+		limit #{firstIndex}, #{perPageResult}
+	</select>
+	
+	<select id="count" resultType="long">
+		select count(*) from test_person
+		<where>
+			<if test="name!=null and name!=''">
+				name like concat('%', #{name}, '%')
+			</if>
+			<if test="age>0">
+				and age=#{age}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectAll" resultType="person">
+		select * from test_person
 	</select>
 	
 </mapper>

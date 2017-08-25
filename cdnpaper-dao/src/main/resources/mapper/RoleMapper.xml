@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.cdnpaper.dao.RoleDao">
+	<insert id="insert" timeout="30000">
+		insert into role (id, name, description, level) values (#{id}, #{name}, #{description}, #{level})
+	</insert>
+	
+	<delete id="delete" timeout="30000">
+		delete from role where id=#{id}
+	</delete>
+	
+	<update id="update" timeout="30000">
+		update role set name=#{name}, description=#{description}, level=#{level} where id=#{id}
+	</update>
+	
+	<select id="select" resultType="role" timeout="30000">
+		select * from role
+		<where>
+			<if test="var.name!=null and var.name!=''">
+				name like concat('%', #{var.name}, '%')
+			</if>
+			<if test="var.level>0">
+				and level=#{var.level}
+			</if>
+		</where>
+		<if test="order!=null and order.size()>0">
+			<foreach collection="order" index="key" item="value" open="order by" separator=",">
+				`${key}` ${value}
+			</foreach>
+		</if>
+		limit #{firstIndex}, #{perPageResult}
+	</select>
+	
+	<select id="count" resultType="long" timeout="30000">
+		select count(*) from role
+		<where>
+			<if test="name!=null and name!=''">
+				name like concat('%', #{name}, '%')
+			</if>
+			<if test="level>0">
+				and level=#{level}
+			</if>
+		</where>
+	</select>
+	
+</mapper>

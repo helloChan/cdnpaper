@@ -1,11 +1,13 @@
 package top.cdnpaper.test;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import top.cdnpaper.model.PageView;
 import top.cdnpaper.model.Person;
 import top.cdnpaper.service.PersonService;
 
@@ -27,10 +29,18 @@ public class PersonServiceTest {
 	
 	@Test
 	public void testSelectPerson(){
-		List<Person> persons = personService.getAllPerson();
-		for (Person person : persons) {
-			System.out.println(person);
+		Person person = new Person();
+		person.setName("aaa");
+		int currentPage = 1;
+		
+		Map<String, String> order = new HashMap<String, String>();
+		order.put("age", "asc");
+		
+		PageView<Person> pageView = personService.getPersons(person, currentPage, order);
+		for (Person p : pageView.getResultList()) {
+			System.out.println(p);
 		}
+		System.out.println(pageView.getTotalRecord());
 	}
 	
 }
