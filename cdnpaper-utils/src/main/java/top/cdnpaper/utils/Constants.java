@@ -42,6 +42,20 @@ public class Constants {
 	 */
 	public static final String YYYY_MM_DD_HHSSMM_12_CHINESE = "yyyy-MM-dd aa hh:mm:ss";
 	
+	/**
+	 * 默认cookie失效时间
+	 */
+	public static final int DEFAULT_COOKIE_EXPIRE = 30*60;
+	
+	/**
+	 * 默认返回结果封装类{@link top.cdnpaper.model.Result}中成功信息
+	 */
+	public static final String DEFAULT_RESULT_SUCCESS_MESSAGE = "操作成功";
+
+	/**
+	 * 默认返回结果封装类{@link top.cdnpaper.model.Result}中失败信息
+	 */
+	public static final String DEFAULT_RESULT_ERROR_MESSAGE = "系统错误";
 	
 	/**
 	 * 工具类不允许实例化

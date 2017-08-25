@@ -25,6 +25,11 @@
 			<artifactId>cdnpaper-dao</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>top.cdnpaper</groupId>
+			<artifactId>cdnpaper-utils</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
