@@ -1,7 +1,7 @@
-CREATE TABLE role(
-id varchar(255) NOT NULL COMMENT '±êÊ¶·û',
-name varchar(255) NOT NULL COMMENT 'Ãû³Æ',
-description varchar(255) NOT NULL COMMENT 'ÃèÊö',
-level int(11) NOT NULL DEFAULT '1' COMMENT 'µÈ¼¶(ÅÅÐò)',
+ï»¿CREATE TABLE role(
+id varchar(255) NOT NULL COMMENT 'æ ‡è¯†ç¬¦',
+name varchar(255) NOT NULL COMMENT 'åç§°',
+description varchar(255) NOT NULL COMMENT 'æè¿°',
+level int(11) NOT NULL DEFAULT '1' COMMENT 'ç­‰çº§(æŽ’åº)',
 PRIMARY KEY (id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
